@@ -68,21 +68,30 @@ historique = input("[~] Copiez-collez la ligne de votre historique de forgemagie
 stop(historique)
 pui += reliquat(historique, tableau)
 print("""[+] Votre reliquat est désormais de""", pui)
+code = input("(Press any key)")
+stop(code)
 while True:
     print(
         "[*] Que souhaitez-vous faire ?"
         "\n\n     1. Calcul d'optimisation du reliquat"
-        "\n     2. Mise à jour du reliquat")
+        "\n     2. Mise à jour du reliquat"
+        "\n     3. Reset")
     code = input("\n[~] Entrez le numéro correspondant : ")
     stop(code)
     # os.system("clear")
     # banniere()
     if code == '1':
         carac = input("[~] Caractéristique à augmenter : ")
-        stop(code)
+        stop(carac)
         calcul_over(carac, pui, tableau)
     elif code == '2':
         historique = input("[~] Copiez-collez la ligne de votre historique de forgemagie : ")
         stop(historique)
         pui += reliquat(historique, tableau)
         print("""[+] Votre reliquat est désormais de""", pui)
+    elif code == '3':
+        pui = 0
+        print("""[+] Votre reliquat a été réinitialisé""")
+        print("""[+] Votre reliquat est désormais de""", pui)
+    code = input("(Press any key)")
+    stop(code)
