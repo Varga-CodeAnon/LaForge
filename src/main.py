@@ -1,5 +1,11 @@
 from rune import *
 from interface import *
+import os
+
+def stop(entree):
+    if entree == "q":
+        quit(0)
+
 
 def decoupage(entree):
     """Découpe l'entrée et retourne une liste contenant les différents paramètres à prendre en compte lors du calcul"""
@@ -39,6 +45,17 @@ def reliquat(saisie, tableau_rune):
     return resultat
 
 
+def calcul_over(caracteristique, reli, tableau_rune):
+    """Calcule le nombre de runes nécessaires pour over un item en optimisant au maximum le reliquat"""
+    poid = pesee(caracteristique, tableau_rune)
+    if poid < 1:
+        poid = 1
+    resultat = reli / poid
+    reste = reli % poid
+    print("[+] Vous pouvez inscrire", int(resultat), "runes simples", caracteristique, "\n[!] Il vous restera alors",
+          int(reste), "de reliquat")
+
+
 # Initialisation du tableau de runes
 pui = 0
 tableau = init_rune_tab()
@@ -47,7 +64,25 @@ tableau = init_rune_tab()
 
 banniere()
 print("""[*] Tapez "q" pour sortir du programme""")
-historique = input("[*] Copiez-collez la ligne de votre historique de forgemagie : ")
-while historique != "q":
-    pui = reliquat(historique, tableau)
-    historique = input("[*] Copiez-collez la ligne de votre historique de forgemagie : ")
+historique = input("[~] Copiez-collez la ligne de votre historique de forgemagie : ")
+stop(historique)
+pui += reliquat(historique, tableau)
+print("""[+] Votre reliquat est désormais de""", pui)
+while True:
+    print(
+        "[*] Que souhaitez-vous faire ?"
+        "\n\n     1. Calcul d'optimisation du reliquat"
+        "\n     2. Mise à jour du reliquat")
+    code = input("\n[~] Entrez le numéro correspondant : ")
+    stop(code)
+    # os.system("clear")
+    # banniere()
+    if code == '1':
+        carac = input("[~] Caractéristique à augmenter : ")
+        stop(code)
+        calcul_over(carac, pui, tableau)
+    elif code == '2':
+        historique = input("[~] Copiez-collez la ligne de votre historique de forgemagie : ")
+        stop(historique)
+        pui += reliquat(historique, tableau)
+        print("""[+] Votre reliquat est désormais de""", pui)

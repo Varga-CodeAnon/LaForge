@@ -69,6 +69,3 @@ def init_rune_tab():
                Rune("Arme de chasse", "Rune de chasse", "5")]
 
     return tableau
-
-"-91 Vitalité, -1 PA, 10 Sagesse, +reliquat = 122.75"
-91*1//5+100
