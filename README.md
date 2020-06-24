@@ -6,7 +6,7 @@
      /---/ `.__/| /      `._.' /      `---| `.___,       |__/(_)| (_|_)
                                       \___/
 
-Assistant de forgemagie pour le MMORPG Dofus v2.5 à destination de la guile **Les Sylvidres**
+Assistant de forgemagie pour le MMORPG Dofus v2.5 à destination de la guilde **Les Sylvidres**
 > **\[En cours de développement]**
 ## Utilisation
 Pour une utilisation en ligne de commande, il suffit de télécharger le projet, puis d'exécuter le fichier `cli.py`.
