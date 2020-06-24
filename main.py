@@ -194,6 +194,7 @@ async def stop(ctx):
 Vous pouvez en démarrer une avec la commande `$start`*""")
     else:
         reli = 0  # réinitialisation du reliquat
+        session = 0 # réinitialisation de l'indicateur de session
         await ctx.send("""*Session de forgemagie terminée 🦾
 A très vite !*""")
 
