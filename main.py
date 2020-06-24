@@ -176,6 +176,7 @@ L'historique du reliquat sera conservé.*""")
 @laforge_bot.command()
 async def pui(ctx, historique):
     """Retourne le reliquat généré par la forge"""
+    print(historique)
     global pui
     pui += calcul_reliquat(historique, tableau)
     await ctx.send("*Votre reliquat est désormais de " + pui + ".*")
