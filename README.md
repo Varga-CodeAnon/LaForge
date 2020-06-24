@@ -12,7 +12,7 @@ Assistant de forgemagie pour le MMORPG Dofus v2.5 à destination de la guile **L
 Pour une utilisation en ligne de commande, il suffit de télécharger le projet, puis d'exécuter le fichier `cli.py`.
 *LaForge* peut aussi s'utiliser comme un bot discord, ici en l'occurrence hébergé sur [Heroku](https://www.heroku.com/), dans ce cas, c'est le fichier `main.py` qu'il faudra lancer.
 
-Pour le moment, seul le calcul de reliquat (ou "pui") est implémenté.
+> Pour le moment, seul le calcul de reliquat (ou "pui") est implémenté.
 
 
 ## Pour les utilisateurs
