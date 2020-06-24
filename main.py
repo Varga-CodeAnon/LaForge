@@ -177,6 +177,7 @@ L'historique du reliquat sera conservé.*""")
 async def pui(ctx, historique):
     """Retourne le reliquat généré par la forge"""
     print(historique)
+    print(historique[1],historique[-1])
     global pui
     pui += calcul_reliquat(historique, tableau)
     await ctx.send("*Votre reliquat est désormais de " + pui + ".*")
