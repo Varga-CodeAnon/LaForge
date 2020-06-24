@@ -181,7 +181,7 @@ async def pui(ctx, historique):
     reli += calcul_reliquat(historique, tableau)
     await ctx.send("*Votre reliquat est désormais de " + str(reli) + ".*")
     if not session:
-		reli = 0 # s'il n'y a pas de session, on ne conserve pas l'historique
+        reli = 0 # s'il n'y a pas de session, on ne conserve pas l'historique
 
 
 @laforge_bot.command()
