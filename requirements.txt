@@ -1,1 +1,1 @@
-discord>=1.2.5
+discord>=1.4.0
