@@ -148,7 +148,7 @@ def calcul_reliquat(saisie, tableau_rune):
 # Les commandes du bots, c'est cette partie qui sera éditée en cas d'ajout de
 # nouvelles fonctionnalités
 session = 0  # indique si une session est en cours ou non
-pui = 0  # indique l'historique du pui ou reliquat
+reli = 0  # indique l'historique du pui ou reliquat
 tableau = init_rune_tab()  # initialisation du tableau des runes (cf src/rune.py)
 
 
@@ -162,13 +162,13 @@ async def ping(ctx):
 async def start(ctx):
     """Démarre une session de forgemagie"""
     global session
-    global pui
+    global reli
     if session:
         await ctx.send("""*Une session est déjà en cours !
 Fermez la précédente avec la commande `$stop`*""")
     else:
         session = 1
-        pui = 0  # réinitialisation du reliquat
+        reli = 0  # réinitialisation du reliquat
         await ctx.send("""*Session de forgemagie prête ☘️
 L'historique du reliquat sera conservé.*""")
 
@@ -177,17 +177,15 @@ L'historique du reliquat sera conservé.*""")
 async def pui(ctx, historique):
     """Retourne le reliquat généré par la forge"""
     print(historique)
-    print(historique[1],historique[-1])
-    global pui
-    pui += calcul_reliquat(historique, tableau)
-    await ctx.send("*Votre reliquat est désormais de " + pui + ".*")
+    global reli
+    reli += calcul_reliquat(historique, tableau)
+    await ctx.send("*Votre reliquat est désormais de " + reli + ".*")
 
 
 @laforge_bot.command()
 async def stop(ctx):
     """Stoppe une session de forgemagie"""
     global session
-    global pui
     if not session:
         await ctx.send("""*Aucune session en cours.
 Vous pouvez en démarrer une avec la commande `$start`*""")
