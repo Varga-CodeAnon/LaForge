@@ -23,9 +23,9 @@ token = os.environ['laforge_token']
 # -------------------------------- INTRO ------------------------------------
 # C'est ici qu'est initialisé le bot, qu'on lui donne naissance
 description = """LaForge - Assistant de forgemagie pour le MMORPG Dofus v2.5"""
-laforge_bot = commands.Bot(command_prefix='$', description=description) # descripteur du bot
+laforge_bot = commands.Bot(command_prefix='$', description=description)  # descripteur du bot
 
-print('---------------') # armorçage du bot, côté serveur donc invisible sur discord
+print('---------------')  # armorçage du bot, côté serveur donc invisible sur discord
 print(' *-= Arena =-* ')
 print('---------------')
 print('Starting Bot...')
@@ -34,8 +34,11 @@ print('Starting Bot...')
 @laforge_bot.event
 async def on_ready():  # quand le bot est prêt...
     game = discord.Game("chauffer la forge")
-    await laforge_bot.change_presence(status=discord.Status.idle, activity=game) # ...affiche le statut idle:"Joue à chauffer la forge"...
+    await laforge_bot.change_presence(status=discord.Status.idle,
+                                      activity=game)  # ...affiche le statut idle:"Joue à chauffer la forge"...
     print('*Bot is ready*')  # ... et affiche dans le terminal du serveur *Bot is ready*
+
+
 # -------------------------------- -=*=- ------------------------------------
 
 # -------------------------------- ROLES ------------------------------------
@@ -119,6 +122,7 @@ def pesee(carac, tableau_rune):
             resultat = rune.getPoids()
     return resultat
 
+
 def poid_terme(terme, tableau_rune):
     """Retourne le poid effectif d'une perte ou d'un gain d'un terme suite à l'application d'une rune"""
     """Exemple : ["+10", "Sagesse"], poid effectif : 10*3=30"""
@@ -138,13 +142,14 @@ def calcul_reliquat(saisie, tableau_rune):
         resultat += -poid_terme(terme, tableau_rune)
     return resultat
 
+
 # -------------------------------- -=*=- ------------------------------------
 
 # ------------------------------ COMMANDES ----------------------------------
 # Les commandes du bots, c'est cette partie qui sera éditée en cas d'ajout de
 # nouvelles fonctionnalités
-session = 0 # indique si une session est en cours ou non
-pui = 0     # indique l'historique du pui ou reliquat
+session = 0  # indique si une session est en cours ou non
+pui = 0  # indique l'historique du pui ou reliquat
 tableau = init_rune_tab()  # initialisation du tableau des runes (cf src/rune.py)
 
 
@@ -153,32 +158,42 @@ async def ping(ctx):
     """Ping le bot, permet de savoir s'il est actif ou non"""
     await ctx.send(f"*Pong, vitesse de {round(laforge_bot.latency * 1000)}ms*")
 
+
 @laforge_bot.command()
 async def start(ctx):
-	"""Démarre une session de forgemagie"""
-	if session:
-		await ctx.send("""*Une session est déjà en cours !
+    """Démarre une session de forgemagie"""
+    global session
+    global pui
+    if session:
+        await ctx.send("""*Une session est déjà en cours !
 Fermez la précédente avec la commande `$stop`*""")
-	else:
-		pui = 0  # réinitialisation du reliquat
-		await ctx.send("""*Session de forgemagie prête ☘️
+    else:
+        session = 1
+        pui = 0  # réinitialisation du reliquat
+        await ctx.send("""*Session de forgemagie prête ☘️
 L'historique du reliquat sera conservé.*""")
+
 
 @laforge_bot.command()
 async def pui(ctx, historique):
-	"""Retourne le reliquat généré par la forge"""
-	pui += calcul_reliquat(historique, tableau)
-	await ctx.send("*Votre reliquat est désormais de " + pui + ".*")
+    """Retourne le reliquat généré par la forge"""
+    global pui
+    pui += calcul_reliquat(historique, tableau)
+    await ctx.send("*Votre reliquat est désormais de " + pui + ".*")
+
 
 @laforge_bot.command()
 async def stop(ctx):
-	"""Stoppe une session de forgemagie"""
-	if not session:
-		await ctx.send("""*Aucune session en cours.
+    """Stoppe une session de forgemagie"""
+    global session
+    global pui
+    if not session:
+        await ctx.send("""*Aucune session en cours.
 Vous pouvez en démarrer une avec la commande `$start`*""")
-	else:
-		await ctx.send("""*Session de forgemagie terminée 🦾
+    else:
+        await ctx.send("""*Session de forgemagie terminée 🦾
 A très vite !*""")
+
 
 # @laforge_bot.command()
 # async def bienvenue(ctx):
