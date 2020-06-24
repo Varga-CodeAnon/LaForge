@@ -95,3 +95,9 @@ while True:
         print("""[+] Votre reliquat est désormais de""", pui)
     code = input("(Press any key)")
     stop(code)
+
+# Penser objet pour l'interface qui gère l'entrée et la sortie, et qui contient la boucle et qui appelle ses propres
+# fonctions
+# tkinter pygame
+# factoriser les elifs
+# dictionnaire de fonction
