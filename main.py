@@ -188,10 +188,12 @@ async def pui(ctx, historique):
 async def stop(ctx):
     """Stoppe une session de forgemagie"""
     global session
+    global reli
     if not session:
         await ctx.send("""*Aucune session en cours.
 Vous pouvez en démarrer une avec la commande `$start`*""")
     else:
+        reli = 0  # réinitialisation du reliquat
         await ctx.send("""*Session de forgemagie terminée 🦾
 A très vite !*""")
 
