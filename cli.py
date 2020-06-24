@@ -1,5 +1,5 @@
-from rune import *
-from interface import *
+from src.rune import *
+from src.interface import *
 import os
 
 def stop(entree):
