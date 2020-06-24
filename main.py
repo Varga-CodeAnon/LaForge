@@ -179,7 +179,7 @@ async def pui(ctx, historique):
     print(historique)
     global reli
     reli += calcul_reliquat(historique, tableau)
-    await ctx.send("*Votre reliquat est désormais de " + reli + ".*")
+    await ctx.send("*Votre reliquat est désormais de " + str(reli) + ".*")
 
 
 @laforge_bot.command()
@@ -195,7 +195,7 @@ A très vite !*""")
 
 
 # @laforge_bot.command()
-# async def bienvenue(ctx):
+# async def publication(ctx):
 #     await ctx.send("""
 #     Ce discord possède 5 thématiques principales qui sont :
 #         - La Cybersécurité
